@@ -15,7 +15,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         int userID = 0;
-        String user = "Coolio";
+        String user;
         Boolean go = true;
 
         try {
