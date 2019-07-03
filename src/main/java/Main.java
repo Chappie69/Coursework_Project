@@ -16,45 +16,14 @@ public class Main {
 
         int userID = 0;
         String user;
-        Boolean go = true;
 
-        try {
+        //STUFF TO CALL METHOD TO ADD USER
+        System.out.println("Would you like add a new user? (Y/N)");
+        user = in.nextLine();
 
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
+        if (user == "N") {
 
-            while (go = true){
-                ResultSet results = ps.executeQuery();
-                while (results.next()) {
-                    userID = results.getInt(1);
-                    String username = results.getString(2);
-                    String password = results.getString(3);
-                    System.out.println(userID + " " + username + " " + password);
-                }
-
-                ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
-
-                int newID = userID + 1;
-                String inpUser = in.nextLine();
-                String inpPass = in.nextLine();
-
-                ps.setInt(1, newID);
-                ps.setString(2, inpUser);
-                ps.setString(3, inpPass);
-
-                ps.executeUpdate();
-
-                System.out.println("Would you like add a new user? (Y/N)");
-                user = in.nextLine();
-
-                if (user == "N"){
-                    go = false;
-                }
-            }
-        } catch (Exception exception) {
-            System.out.println("Database error: " + exception.getMessage());
         }
-
-        closeDatabase();
     }
 
     private static void openDatabase(String dbFile) {
