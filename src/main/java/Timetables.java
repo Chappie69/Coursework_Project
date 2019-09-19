@@ -1,0 +1,2 @@
+public class Timetables {
+}

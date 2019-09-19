@@ -1,32 +1,30 @@
 import org.sqlite.SQLiteConfig;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import java.sql.*;
 import java.util.Scanner;
 
-public class UserData {
+public class UserDataController {
 
     public static Connection db = null;
 
-    public static void newUser{
+    public static void newUser() {
+        try {
+            Scanner in = new Scanner(System.in);
+            openDatabase("proj_database.db");
 
-        Scanner in = new Scanner(System.in);
-        openDatabase("proj_database.db");
+            int userID = 0;
+            String user;
+            Boolean go = true;
 
-        int userID = 0;
-        String user;
-        Boolean go = true;
+            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
 
-        PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
-
-        ResultSet results = ps.executeQuery();
-        while (results.next()) {
-            userID = results.getInt(1);
-            String username = results.getString(2);
-            String password = results.getString(3);
-            System.out.println(userID + " " + username + " " + password);
-        }
+            ResultSet results = ps.executeQuery();
+            while (results.next()) {
+                userID = results.getInt(1);
+                String username = results.getString(2);
+                String password = results.getString(3);
+                System.out.println(userID + " " + username + " " + password);
+            }
 
             ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
 
@@ -39,11 +37,14 @@ public class UserData {
             ps.setString(3, inpPass);
 
             ps.executeUpdate();
-        closeDatabase();
+            closeDatabase();
+        } catch (Exception exception) {
+            System.out.println("Error adding new user");
+        }
     }
 
     private static void openDatabase(String dbFile) {
-        try  {
+        try {
 
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
@@ -54,7 +55,6 @@ public class UserData {
         } catch (Exception exception) {
             System.out.println("Database connection error: " + exception.getMessage());
         }
-
     }
 
     private static void closeDatabase(){
