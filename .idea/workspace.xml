@@ -4,13 +4,13 @@
     <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/dictionaries/87658.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Events.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Timetables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ToDoLists.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Schedules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/Schedules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Timetables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/Timetables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ToDoLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ToDoLists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,11 +69,6 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="874" />
-    <option name="height" value="991" />
-  </component>
   <component name="ProjectId" id="1R3UVMfxKXbxbijQzQmo3zvWYTS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -85,10 +80,10 @@
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -110,8 +105,8 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="COURSEWORK" />
+      <option name="MAIN_CLASS_NAME" value="Server.Main" />
+      <module name="Coursework_Project" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,7 +157,15 @@
       <workItem from="1561983209838" duration="2150000" />
       <workItem from="1562147512179" duration="3927000" />
       <workItem from="1568895297951" duration="343000" />
-      <workItem from="1568895662512" duration="3086000" />
+      <workItem from="1568895662512" duration="3160000" />
+      <workItem from="1569226903199" duration="3084000" />
+      <workItem from="1569501790314" duration="730000" />
+      <workItem from="1570104380134" duration="5053000" />
+      <workItem from="1570542297037" duration="1236000" />
+      <workItem from="1570709173285" duration="300000" />
+      <workItem from="1570710084287" duration="1693000" />
+      <workItem from="1571040290832" duration="770000" />
+      <workItem from="1572858726048" duration="4434000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -192,7 +195,28 @@
       <option name="project" value="LOCAL" />
       <updated>1562152234928</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Was in the process of moving /main/ code to users so that you can call method to add user multiple times">
+      <created>1568899708269</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568899708269</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changed a ting">
+      <created>1570109480295</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570109480295</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changed a ting">
+      <created>1570542903868</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1570542903868</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +239,7 @@
     <MESSAGE value="yoooooooooooooo it hecking works bro" />
     <MESSAGE value="Doing stuff wid da databases boiiiiiiiiiiiiiii" />
     <MESSAGE value="Was in the process of moving /main/ code to users so that you can call method to add user multiple times" />
-    <option name="LAST_COMMIT_MESSAGE" value="Was in the process of moving /main/ code to users so that you can call method to add user multiple times" />
+    <MESSAGE value="Changed a ting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed a ting" />
   </component>
 </project>

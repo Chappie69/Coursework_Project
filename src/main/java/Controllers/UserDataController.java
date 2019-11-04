@@ -4,6 +4,7 @@ import Server.Main;
 import java.sql.*;
 import java.util.Scanner;
 
+
 public class UserDataController {
 
     public static Connection db = null;
@@ -31,7 +32,7 @@ public class UserDataController {
                 System.out.println(userID + " " + username + " " + password);
             }
 
-            //This is the statement that will me sent into the table
+            //This is the statement that will be sent into the table
             ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
 
             int newID = userID + 1;
