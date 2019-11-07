@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 
-public class Schedules {
+public class ScheduleController {
 
     public static Connection db = null;
 

@@ -4,7 +4,7 @@ import Server.Main;
 import java.sql.Connection;
 import java.util.Scanner;
 
-public class Timetables {
+public class TimetableController {
 
     public static Connection db = null;
 
