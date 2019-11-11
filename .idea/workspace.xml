@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="Started on TdoLists, timetables, schedules and editing the docs ting ;)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
+    <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="&#10;UPDATED, CHANGE tHE TABLES">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Schedules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Timetables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ToDoLists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,6 +167,8 @@
       <workItem from="1572858726048" duration="4558000" />
       <workItem from="1572967056084" duration="64000" />
       <workItem from="1573133558067" duration="2055000" />
+      <workItem from="1573136884305" duration="70000" />
+      <workItem from="1573463643278" duration="2420000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -227,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572863311135</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="&#10;UPDATED, CHANGE tHE TABLES">
+      <created>1573136930401</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1573136930401</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +258,7 @@
     <MESSAGE value="Was in the process of moving /main/ code to users so that you can call method to add user multiple times" />
     <MESSAGE value="Changed a ting" />
     <MESSAGE value="Started on TdoLists, timetables, schedules and editing the docs ting ;)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started on TdoLists, timetables, schedules and editing the docs ting ;)" />
+    <MESSAGE value="&#10;UPDATED, CHANGE tHE TABLES" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;UPDATED, CHANGE tHE TABLES" />
   </component>
 </project>
