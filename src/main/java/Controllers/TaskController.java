@@ -23,15 +23,6 @@ public class TaskController {
 
             PreparedStatement ps = db.prepareStatement("SELECT ListID, Username, Password FROM UserData");
 
-
-            ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                userID = results.getInt(1);
-                String username = results.getString(2);
-                String password = results.getString(3);
-                System.out.println(userID + " " + username + " " + password);
-            }
-
             //This is the statement that will be sent into the table -------------------------------
             ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
 
@@ -53,6 +44,30 @@ public class TaskController {
         }
     }
 
+    //READ FROM USERS
+    public static void readTasks() {
+
+        Main.openDatabase("proj_database.db");
+
+        try {
+
+            //These are the fields which will be retrieved and outputted:
+            PreparedStatement ps = db.prepareStatement("SELECT TaskID, TaskName FROM Tasks");
+            ResultSet results = ps.executeQuery();
+
+            //"results.next" makes the program go through each record in the table
+            while (results.next()) {
+                int userID = results.getInt(1);
+                String username = results.getString(2);
+                System.out.println(userID + " " + username);
+            }
+
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+        }
+
+        Main.closeDatabase();
+    }
 
     //REMOVE TASK FUNCTION ----------------------------------------------------
     public static void delTask() {
@@ -65,7 +80,8 @@ public class TaskController {
             System.out.println("Enter the name (Case sensitive) of the task would you like to remove");
             taskInput = in.nextLine();
 
-            PreparedStatement ps = db.prepareStatement("DELETE FROM Tasks WHERE TaskName = (taskInput)");
+            PreparedStatement ps = db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");
+            ps.setString(1,taskInput);
 
         } catch (Exception exception) {
             System.out.println("Error when deleting task");

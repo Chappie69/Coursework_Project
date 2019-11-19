@@ -9,7 +9,7 @@ public class UserDataController {
 
     public static Connection db = null;
 
-    //ADD NEW USER FUNCTION
+    //CREATE NEW USER FUNCTION
     public static void newUser() {
         try {
 
@@ -53,6 +53,31 @@ public class UserDataController {
         }
     }
 
+
+    //READ FROM USERS
+    public static void readUsers() {
+
+        Main.openDatabase("proj_database.db");
+
+        try {
+
+            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username FROM Users");
+            ResultSet results = ps.executeQuery();
+
+            //"results.next" makes the program go through each record in the table
+            while (results.next()) {
+                int userID = results.getInt(1);
+                String username = results.getString(2);
+                System.out.println(userID + " " + username);
+            }
+
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+        }
+
+        Main.closeDatabase();
+    }
+
     //EDIT EXISTING USER --------------------------THIS IS NOT DONE YET ---------------------------------------
     public static void editUser() {
         try {
@@ -64,7 +89,11 @@ public class UserDataController {
             String user;
             Boolean go = true;
 
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
+            user = in.nextLine();
+            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData WHERE Username = ?");
+            ps.setString(1,user);
+
+            System.out.println("User " +user+ " selected, what would you like to change?");
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
@@ -85,11 +114,12 @@ public class UserDataController {
             ps.setString(3, inpPass);
 
             ps.executeUpdate();
-            Main.closeDatabase();
 
         } catch (Exception exception) {
             System.out.println("Error adding new user");
         }
+
+        Main.closeDatabase();
     }
 
     //DELETE EXISTING USER FUNCTION
@@ -127,7 +157,7 @@ public class UserDataController {
             Main.closeDatabase();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user");
+            System.out.println("Error adding new user: "+ exception.getMessage());
         }
     }
 }

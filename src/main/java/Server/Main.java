@@ -47,13 +47,16 @@ public class Main {
         String user;
 
         //STUFF TO CALL METHOD TO ADD USER
-        System.out.println("Would you like add a new user or delete a new user? (ADD/DEL)");
+        System.out.println("Would you like add, delete, edit or view a user? (ADD/DEL/EDIT/VIEW)");
         user = in.nextLine();
 
         if (user == "ADD") {
             UserDataController.newUser();
         } else if (user == "DEL"){
             UserDataController.delUser();
+        } else if  (user == "EDIT") {
+
+            UserDataController.editUser();
         }
     }
 
