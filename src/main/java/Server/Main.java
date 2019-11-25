@@ -55,8 +55,9 @@ public class Main {
         } else if (user == "DEL"){
             UserDataController.delUser();
         } else if  (user == "EDIT") {
-
             UserDataController.editUser();
+        } else if  (user == "1") {
+            UserDataController.readUsers();
         }
     }
 

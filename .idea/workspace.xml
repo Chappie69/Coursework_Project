@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="&#10;UPDATED, CHANGE tHE TABLES">
+    <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="Started doing remove CRUD for tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +29,7 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="proj_database [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="proj_database" type="feb32156:DbDataSourceImpl" />
       </path>
     </expand>
     <select />
@@ -168,7 +171,12 @@
       <workItem from="1572967056084" duration="64000" />
       <workItem from="1573133558067" duration="2055000" />
       <workItem from="1573136884305" duration="70000" />
-      <workItem from="1573463643278" duration="2420000" />
+      <workItem from="1573463643278" duration="2606000" />
+      <workItem from="1573739819699" duration="858000" />
+      <workItem from="1574341460410" duration="539000" />
+      <workItem from="1574343461134" duration="410000" />
+      <workItem from="1574345922400" duration="423000" />
+      <workItem from="1574673307406" duration="4124000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -233,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573136930401</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Started doing remove CRUD for tasks">
+      <created>1573468073128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1573468073128</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +274,7 @@
     <MESSAGE value="Changed a ting" />
     <MESSAGE value="Started on TdoLists, timetables, schedules and editing the docs ting ;)" />
     <MESSAGE value="&#10;UPDATED, CHANGE tHE TABLES" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;UPDATED, CHANGE tHE TABLES" />
+    <MESSAGE value="Started doing remove CRUD for tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started doing remove CRUD for tasks" />
   </component>
 </project>

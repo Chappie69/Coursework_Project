@@ -11,28 +11,48 @@ public class TaskController {
     public static Connection db = null;
 
 
-    //ADD TASK FUNCTION ----------------------------
+    //ADD TASK FUNCTION -----------------------------------------------------------------------------------------------
     public static void newTask() {
         try {
+
             String user;
+
             Scanner in = new Scanner(System.in);
             Main.openDatabase("proj_database.db");
 
             System.out.println("Enter task name");
             user = in.nextLine();
 
-            PreparedStatement ps = db.prepareStatement("SELECT ListID, Username, Password FROM UserData");
+            PreparedStatement ps = db.prepareStatement("SELECT TaskID, TaskName FROM Tasks");
 
-            //This is the statement that will be sent into the table -------------------------------
-            ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
+            int TaskID;
+            String TaskName;
 
-            int newID = userID + 1;
-            String inpUser = in.nextLine();
-            String inpPass = in.nextLine();
+            ResultSet results = ps.executeQuery();
+            while (results.next()) {
+                TaskID = results.getInt(1);
+                TaskName = results.getString(2);
+                System.out.println(TaskID + " " + TaskName);
+            }
+
+            ps = db.prepareStatement("SELECT TaskID FROM Tasks");
+            results = ps.executeQuery();
+            TaskID = results.getInt(1);
+
+            //This is the statement that will be sent into the table --------------------------------------------------
+            ps = db.prepareStatement("INSERT INTO Tasks (TaskID, TaskName, TaskDue, TaskDone, PriorityID) VALUES (?, ?, ?, ?, ?)");
+
+            int newID = TaskID + 1;
+            String inpTaskName = in.nextLine();
+            String inpTaskDue = in.nextLine();
+            Boolean inpTaskDone = false;
+            int inpPriority = in.nextInt();
 
             ps.setInt(1, newID);
-            ps.setString(2, inpUser);
-            ps.setString(3, inpPass);
+            ps.setString(2, inpTaskName);
+            ps.setString(3, inpTaskDue);
+            ps.setBoolean(4, inpTaskDone);
+            ps.setInt(5, inpPriority);
 
             //Executes prepared statement
             ps.executeUpdate();
@@ -44,7 +64,7 @@ public class TaskController {
         }
     }
 
-    //READ FROM USERS
+    //READ FROM USERS -------------------------------------------------------------------------------------------------
     public static void readTasks() {
 
         Main.openDatabase("proj_database.db");
@@ -57,9 +77,9 @@ public class TaskController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int userID = results.getInt(1);
-                String username = results.getString(2);
-                System.out.println(userID + " " + username);
+                int TaskID = results.getInt(1);
+                String TaskName = results.getString(2);
+                System.out.println(TaskID + " " + TaskName);
             }
 
         } catch (Exception exception) {
@@ -69,7 +89,7 @@ public class TaskController {
         Main.closeDatabase();
     }
 
-    //REMOVE TASK FUNCTION ----------------------------------------------------
+    //REMOVE TASK FUNCTION --------------------------------------------------------------------------------------------
     public static void delTask() {
         try {
 
@@ -89,7 +109,7 @@ public class TaskController {
     }
 
 
-    //EDIT TASK FUNCTION
+    //EDIT TASK FUNCTION ----------------------------------------------------------------------------------------------
     public static void editTask() {
         try {
 

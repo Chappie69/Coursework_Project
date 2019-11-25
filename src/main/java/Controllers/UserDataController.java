@@ -9,20 +9,16 @@ public class UserDataController {
 
     public static Connection db = null;
 
-    //CREATE NEW USER FUNCTION
+    //CREATE NEW USER FUNCTION ----------------------------------------------------------------------------------------
     public static void newUser() {
         try {
-
             Scanner in = new Scanner(System.in);
+            String userInput = in.nextLine();
             Main.openDatabase("proj_database.db");
 
             int userID = 0;
-            String user;
-            //Will continue while true
-            Boolean go = true;
 
             PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
-
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
@@ -54,7 +50,7 @@ public class UserDataController {
     }
 
 
-    //READ FROM USERS
+    //READ FROM USERS -------------------------------------------------------------------------------------------------
     public static void readUsers() {
 
         Main.openDatabase("proj_database.db");
@@ -71,6 +67,10 @@ public class UserDataController {
                 System.out.println(userID + " " + username);
             }
 
+            int userID = results.getInt(1);
+            String username = results.getString(2);
+            System.out.println(userID +" " +username);
+
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
         }
@@ -78,7 +78,7 @@ public class UserDataController {
         Main.closeDatabase();
     }
 
-    //EDIT EXISTING USER --------------------------THIS IS NOT DONE YET ---------------------------------------
+    //EDIT EXISTING USER -------------------------- THIS IS NOT DONE YET ----------------------------------------------
     public static void editUser() {
         try {
 
@@ -96,12 +96,10 @@ public class UserDataController {
             System.out.println("User " +user+ " selected, what would you like to change?");
 
             ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                userID = results.getInt(1);
-                String username = results.getString(2);
-                String password = results.getString(3);
-                System.out.println(userID + " " + username + " " + password);
-            }
+            userID = results.getInt(1);
+            String username = results.getString(2);
+            String password = results.getString(3);
+            System.out.println(userID + " " + username);
 
             ps = db.prepareStatement("DELETE FROM UserData (UserId, Username, Password) VALUES (?, ?, ?)");
 
@@ -122,7 +120,7 @@ public class UserDataController {
         Main.closeDatabase();
     }
 
-    //DELETE EXISTING USER FUNCTION
+    //DELETE EXISTING USER FUNCTION -----------------------------------------------------------------------------------
     public static void delUser() {
         try {
 
