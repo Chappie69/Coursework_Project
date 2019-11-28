@@ -5,35 +5,31 @@ import java.sql.*;
 import java.util.Scanner;
 
 
-public class UserDataController {
-
-    public static Connection db = null;
+public class UsersController {
 
     //CREATE NEW USER FUNCTION ----------------------------------------------------------------------------------------
     public static void newUser() {
         try {
-            Scanner in = new Scanner(System.in);
-            String userInput = in.nextLine();
-            Main.openDatabase("proj_database.db");
 
             int userID = 0;
-
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
+            String username;
+            String password;
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password FROM Users");
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 userID = results.getInt(1);
-                String username = results.getString(2);
-                String password = results.getString(3);
+                username = results.getString(2);
+                password = results.getString(3);
                 System.out.println(userID + " " + username + " " + password);
             }
 
             //This is the statement that will be sent into the table
-            ps = db.prepareStatement("INSERT INTO UserData (UserId, Username, Password) VALUES (?, ?, ?)");
+            ps = Main.db.prepareStatement("INSERT INTO Users (UserId, Username, Password) VALUES (?, ?, ?)");
 
             int newID = userID + 1;
-            String inpUser = in.nextLine();
-            String inpPass = in.nextLine();
+            String inpUser = "mmmmyyeyeeeee";
+            String inpPass = "jjjjjj";
 
             ps.setInt(1, newID);
             ps.setString(2, inpUser);
@@ -42,10 +38,9 @@ public class UserDataController {
             //Executes prepared statement
             ps.executeUpdate();
             //Close database
-            Main.closeDatabase();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user");
+            System.out.println("Error adding new user: " + exception.getMessage());
         }
     }
 
@@ -57,7 +52,7 @@ public class UserDataController {
 
         try {
 
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username FROM Users");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username FROM Users");
             ResultSet results = ps.executeQuery();
 
             //"results.next" makes the program go through each record in the table
@@ -67,14 +62,9 @@ public class UserDataController {
                 System.out.println(userID + " " + username);
             }
 
-            int userID = results.getInt(1);
-            String username = results.getString(2);
-            System.out.println(userID +" " +username);
-
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
         }
-
         Main.closeDatabase();
     }
 
@@ -90,7 +80,7 @@ public class UserDataController {
             Boolean go = true;
 
             user = in.nextLine();
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData WHERE Username = ?");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password FROM Users WHERE Username = ?");
             ps.setString(1,user);
 
             System.out.println("User " +user+ " selected, what would you like to change?");
@@ -101,15 +91,14 @@ public class UserDataController {
             String password = results.getString(3);
             System.out.println(userID + " " + username);
 
-            ps = db.prepareStatement("DELETE FROM UserData (UserId, Username, Password) VALUES (?, ?, ?)");
+            ps = Main.db.prepareStatement("DELETE FROM Users WHERE UserID = ?");
 
             int newID = userID + 1;
             String inpUser = in.nextLine();
             String inpPass = in.nextLine();
 
             ps.setInt(1, newID);
-            ps.setString(2, inpUser);
-            ps.setString(3, inpPass);
+
 
             ps.executeUpdate();
 
@@ -131,7 +120,7 @@ public class UserDataController {
             String user;
             Boolean go = true;
 
-            PreparedStatement ps = db.prepareStatement("SELECT UserID, Username, Password FROM UserData");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password FROM Users");
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
@@ -141,7 +130,7 @@ public class UserDataController {
                 System.out.println(userID + " " + username + " " + password);
             }
 
-            ps = db.prepareStatement("DELETE FROM UserData (UserId, Username, Password) VALUES (?, ?, ?)");
+            //ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = );
 
             int newID = userID + 1;
             String inpUser = in.nextLine();

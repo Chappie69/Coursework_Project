@@ -43,10 +43,10 @@ public class TaskController {
             ps = db.prepareStatement("INSERT INTO Tasks (TaskID, TaskName, TaskDue, TaskDone, PriorityID) VALUES (?, ?, ?, ?, ?)");
 
             int newID = TaskID + 1;
-            String inpTaskName = in.nextLine();
-            String inpTaskDue = in.nextLine();
+            String inpTaskName = "Yes";
+            String inpTaskDue = "It works";
             Boolean inpTaskDone = false;
-            int inpPriority = in.nextInt();
+            int inpPriority = 2;
 
             ps.setInt(1, newID);
             ps.setString(2, inpTaskName);

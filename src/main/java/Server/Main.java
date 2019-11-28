@@ -1,6 +1,6 @@
 package Server;
 
-import Controllers.UserDataController;
+import Controllers.UsersController;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -46,19 +46,10 @@ public class Main {
         int userID = 0;
         String user;
 
-        //STUFF TO CALL METHOD TO ADD USER
-        System.out.println("Would you like add, delete, edit or view a user? (ADD/DEL/EDIT/VIEW)");
-        user = in.nextLine();
+        //STUFF TO CALL METHOD TO DO STUFF
+        UsersController.newUser();
 
-        if (user == "ADD") {
-            UserDataController.newUser();
-        } else if (user == "DEL"){
-            UserDataController.delUser();
-        } else if  (user == "EDIT") {
-            UserDataController.editUser();
-        } else if  (user == "1") {
-            UserDataController.readUsers();
-        }
+        closeDatabase();
     }
 
     // OPEN DATABASE FUNCTION
