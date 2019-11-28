@@ -1,6 +1,6 @@
 package Controllers;
 
-public class Events {
+public class EventsController {
     //Add event
 
     //Remove event
