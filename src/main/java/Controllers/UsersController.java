@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class UsersController {
 
-    //CREATE NEW USER FUNCTION ----------------------------------------------------------------------------------------
+    //CREATE NEW USER FUNCTION ------------------------------(in)COMPLETE---------------------------------------------------
     public static void newUser() {
         try {
 
@@ -25,7 +25,7 @@ public class UsersController {
             }
 
             //This is the statement that will be sent into the table
-            ps = Main.db.prepareStatement("INSERT INTO Users (UserId, Username, Password) VALUES (?, ?, ?)");
+            ps = Main.db.prepareStatement("INSERT INTO Users (UserID, Username, Password) VALUES (?, ?, ?)");
 
             int newID = userID + 1;
             String inpUser = "mmmmyyeyeeeee";
@@ -37,7 +37,6 @@ public class UsersController {
 
             //Executes prepared statement
             ps.executeUpdate();
-            //Close database
 
         } catch (Exception exception) {
             System.out.println("Error adding new user: " + exception.getMessage());
@@ -106,41 +105,17 @@ public class UsersController {
             System.out.println("Error adding new user");
         }
 
-        Main.closeDatabase();
     }
 
     //DELETE EXISTING USER FUNCTION -----------------------------------------------------------------------------------
-    public static void delUser() {
+    public static void delUser(String username) {
         try {
-
-            Scanner in = new Scanner(System.in);
             Main.openDatabase("proj_database.db");
 
-            int userID = 0;
-            String user;
-            Boolean go = true;
-
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password FROM Users");
-
-            ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                userID = results.getInt(1);
-                String username = results.getString(2);
-                String password = results.getString(3);
-                System.out.println(userID + " " + username + " " + password);
-            }
-
-            //ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = );
-
-            int newID = userID + 1;
-            String inpUser = in.nextLine();
-            String inpPass = in.nextLine();
-
-            ps.setInt(1, newID);
-            ps.setString(2, inpUser);
-            ps.setString(3, inpPass);
-
+            PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = ?");
+            ps.setString(1, username);
             ps.executeUpdate();
+
             Main.closeDatabase();
 
         } catch (Exception exception) {

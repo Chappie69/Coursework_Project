@@ -11,17 +11,12 @@ public class TaskController {
     public static Connection db = null;
 
 
-    //ADD TASK FUNCTION -----------------------------------------------------------------------------------------------
-    public static void newTask() {
+    //CREATE TASK FUNCTION ----------------------------NOT TESTED----------------------------------------------------
+    public static void newTask(String taskName) {
         try {
-
-            String user;
 
             Scanner in = new Scanner(System.in);
             Main.openDatabase("proj_database.db");
-
-            System.out.println("Enter task name");
-            user = in.nextLine();
 
             PreparedStatement ps = db.prepareStatement("SELECT TaskID, TaskName FROM Tasks");
 
@@ -39,14 +34,14 @@ public class TaskController {
             results = ps.executeQuery();
             TaskID = results.getInt(1);
 
-            //This is the statement that will be sent into the table --------------------------------------------------
+            //This is the statement that will be sent into the table ---------------------------------------------------
             ps = db.prepareStatement("INSERT INTO Tasks (TaskID, TaskName, TaskDue, TaskDone, PriorityID) VALUES (?, ?, ?, ?, ?)");
 
             int newID = TaskID + 1;
-            String inpTaskName = "Yes";
-            String inpTaskDue = "It works";
+            String inpTaskName = taskName;
+            String inpTaskDue = "None";
             Boolean inpTaskDone = false;
-            int inpPriority = 2;
+            int inpPriority = 0;
 
             ps.setInt(1, newID);
             ps.setString(2, inpTaskName);
@@ -60,11 +55,11 @@ public class TaskController {
             Main.closeDatabase();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new task");
+            System.out.println("Error adding new task" + exception.getMessage());
         }
     }
 
-    //READ FROM USERS -------------------------------------------------------------------------------------------------
+    //READ FROM TASKS ------------------------------INCOMPLETE----------------------------------------------------
     public static void readTasks() {
 
         Main.openDatabase("proj_database.db");
@@ -89,27 +84,8 @@ public class TaskController {
         Main.closeDatabase();
     }
 
-    //REMOVE TASK FUNCTION --------------------------------------------------------------------------------------------
-    public static void delTask() {
-        try {
 
-            String taskInput;
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
-
-            System.out.println("Enter the name (Case sensitive) of the task would you like to remove");
-            taskInput = in.nextLine();
-
-            PreparedStatement ps = db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");
-            ps.setString(1,taskInput);
-
-        } catch (Exception exception) {
-            System.out.println("Error when deleting task");
-        }
-    }
-
-
-    //EDIT TASK FUNCTION ----------------------------------------------------------------------------------------------
+    //UPDATE TASK FUNCTION -----------------------------INCOMPLETE--------------------------------------------------------
     public static void editTask() {
         try {
 
@@ -118,6 +94,23 @@ public class TaskController {
 
         } catch (Exception exception) {
             System.out.println("Error when editing task");
+        }
+    }
+
+
+    //DESTROY TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
+    public static void delTask(String taskName) {
+        try {
+            Main.openDatabase("proj_database.db");
+
+            PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");
+            ps.setString(1, taskName);
+            ps.executeUpdate();
+
+            Main.closeDatabase();
+
+        } catch (Exception exception) {
+            System.out.println("Error removing task: "+ exception.getMessage());
         }
     }
 }

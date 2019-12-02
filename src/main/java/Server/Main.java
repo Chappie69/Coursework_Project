@@ -46,7 +46,7 @@ public class Main {
         int userID = 0;
         String user;
 
-        //STUFF TO CALL METHOD TO DO STUFF
+        //STUFF TO CALL METHOD TO DO STUFF -----------------------------------------------------------------------------
         UsersController.newUser();
 
         closeDatabase();

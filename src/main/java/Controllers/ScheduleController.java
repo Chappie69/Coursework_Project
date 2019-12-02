@@ -12,28 +12,29 @@ public class ScheduleController {
     public static Connection db = null;
 
     //ADD SCHEDULE FUNCTION -------------------------------------------------------------------------------------------
-    public static void newSchedule() {
+    public static void newSchedule(String scheduleName) {
         try {
 
             Scanner in = new Scanner(System.in);
             Main.openDatabase("proj_database.db");
 
-            int userID = 0;
+            int scheduleID = 0;
 
-            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID, ScheduleName, CreatorID, TableID, CategoryID FROM Schedules");
+            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID, ScheduleName, TableID, CategoryID FROM Schedules");
 
             ResultSet results = ps .executeQuery();
             while (results.next()) {
-                userID = results.getInt(1);
-                String username = results.getString(2);
-                String password = results.getString(3);
-                System.out.println(userID + " " + username + " " + password);
+                scheduleID = results.getInt(1);
+                String ScheduleName = results.getString(2);
+                String tableID = results.getString(3);
+                int categoryID = results.getInt(4)
+                System.out.println(scheduleID + " " + ScheduleName + " " + tableID + " " + categoryID);
             }
 
             //This is the statement that will be sent into the table
             ps = db.prepareStatement("INSERT INTO Schedules (ScheduleID, ScheduleName, CreatorID, TableID, CategoryID) VALUES (?, ?, ?, ?, ?)");
 
-            int newID = userID + 1;
+            int newID = scheduleID + 1;
             String inpUser = in.nextLine();
             String inpPass = in.nextLine();
 
@@ -47,7 +48,7 @@ public class ScheduleController {
             Main.closeDatabase();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user" + exception.getMessage());
+            System.out.println("Error adding new schedule" + exception.getMessage());
         }
     }
 
