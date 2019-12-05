@@ -27,7 +27,7 @@ public class ScheduleController {
                 scheduleID = results.getInt(1);
                 String ScheduleName = results.getString(2);
                 String tableID = results.getString(3);
-                int categoryID = results.getInt(4)
+                int categoryID = results.getInt(4);
                 System.out.println(scheduleID + " " + ScheduleName + " " + tableID + " " + categoryID);
             }
 

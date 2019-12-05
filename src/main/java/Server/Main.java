@@ -1,12 +1,6 @@
 package Server;
 
-import Controllers.UsersController;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
-import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.servlet.ServletContainer;
+import Controllers.UserController;
 import org.sqlite.SQLiteConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,7 +41,7 @@ public class Main {
         String user;
 
         //STUFF TO CALL METHOD TO DO STUFF -----------------------------------------------------------------------------
-        UsersController.newUser();
+        UserController.delUser("mmmmyyeyeeeee");
 
         closeDatabase();
     }
