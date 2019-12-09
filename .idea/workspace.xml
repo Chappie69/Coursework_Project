@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6ddec4-c631-4c03-a715-5d2c4c83b90a" name="Default" comment="Have clocked how everything works, now just need to implement into other controllers">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -220,6 +216,8 @@
       <workItem from="1574673307406" duration="4190000" />
       <workItem from="1574946187840" duration="4989000" />
       <workItem from="1575277782315" duration="4117000" />
+      <workItem from="1575550959698" duration="4814000" />
+      <workItem from="1575882611320" duration="675000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -319,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574951289148</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Have clocked how everything works, now just need to implement into other controllers">
+      <created>1575556108700</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575556108700</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
