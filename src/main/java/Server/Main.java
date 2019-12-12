@@ -1,5 +1,6 @@
 package Server;
 
+import Controllers.TaskController;
 import Controllers.UserController;
 import org.sqlite.SQLiteConfig;
 import java.sql.Connection;
@@ -41,7 +42,7 @@ public class Main {
         String user;
 
         //STUFF TO CALL METHOD TO DO STUFF -----------------------------------------------------------------------------
-        UserController.delUser("mmmmyyeyeeeee");
+        TaskController.readTasks();
 
         closeDatabase();
     }

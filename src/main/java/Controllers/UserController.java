@@ -2,7 +2,6 @@ package Controllers;
 
 import Server.Main;
 import java.sql.*;
-import java.util.Scanner;
 
 
 public class UserController {
@@ -55,7 +54,7 @@ public class UserController {
         }
     }
 
-    //EDIT EXISTING USER -------------------------- THIS IS NOT DONE YET -----------------------------------------------
+    //EDIT EXISTING USER -------------------------- Not tested -----------------------------------------------
     public static void editUser(String username, String password) {
         try {
 
