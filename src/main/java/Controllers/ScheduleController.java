@@ -1,6 +1,8 @@
 package Controllers;
 
 import Server.Main;
+import jdk.jfr.Category;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,70 +13,81 @@ public class ScheduleController {
 
     public static Connection db = null;
 
-    //ADD SCHEDULE FUNCTION -------------------------------------------------------------------------------------------
-    public static void newSchedule(String scheduleName) {
+    //ADD SCHEDULE FUNCTION -------------------------------NOT TESTED--------------------------------------------
+    public static void newSchedule(String ScheduleName, Integer CategoryID) {
         try {
-
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
 
             int scheduleID = 0;
 
-            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID, ScheduleName, TableID, CategoryID FROM Schedules");
+            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID, ScheduleName, CategoryID FROM Schedules");
 
             ResultSet results = ps .executeQuery();
             while (results.next()) {
                 scheduleID = results.getInt(1);
-                String ScheduleName = results.getString(2);
-                String tableID = results.getString(3);
-                int categoryID = results.getInt(4);
-                System.out.println(scheduleID + " " + ScheduleName + " " + tableID + " " + categoryID);
+                String scheduleName = results.getString(2);
+                int categoryID = results.getInt(3);
+                System.out.println(scheduleID + " " + scheduleName + " " + categoryID);
             }
 
             //This is the statement that will be sent into the table
-            ps = db.prepareStatement("INSERT INTO Schedules (ScheduleID, ScheduleName, CreatorID, TableID, CategoryID) VALUES (?, ?, ?, ?, ?)");
+            ps = db.prepareStatement("INSERT INTO Schedules (ScheduleID, ScheduleName, CategoryID) VALUES (?, ?, ?)");
 
             int newID = scheduleID + 1;
-            String inpUser = in.nextLine();
-            String inpPass = in.nextLine();
 
             ps.setInt(1, newID);
-            ps.setString(2, inpUser);
-            ps.setString(3, inpPass);
+            ps.setString(2, ScheduleName);
+            ps.setInt(3, CategoryID);
 
             //Executes prepared statement
             ps.executeUpdate();
-            //Close database
-            Main.closeDatabase();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new schedule" + exception.getMessage());
+            System.out.println("Error adding new schedule " + exception.getMessage());
         }
     }
 
 
-    //REMOVE SCHEDULE FUNCTION ----------------------------------------------------------------------------------------
-    public static void delSchedule() {
+    //READ FROM SCHEDULES -------------------------------NOT TESTED-----------------------------------------------------
+    public static void readSchedules() {
+
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT ScheduleID, ScheduleName FROM Schedules");
+            ResultSet results = ps.executeQuery();
+
+            //"results.next" makes the program go through each record in the table
+            while (results.next()) {
+                int ScheduleID = results.getInt(1);
+                String ScheduleName = results.getString(2);
+                System.out.println(ScheduleID + " " + ScheduleName);
+            }
 
         } catch (Exception exception) {
-            System.out.println("Error when deleting schedule" + exception.getMessage());
+            System.out.println("Error when reading schedules " + exception.getMessage());
         }
     }
 
 
-    //EDIT SCHEDULE FUNCTION ------------------------------------------------------------------------------------------
+    //UPDATE SCHEDULE FUNCTION ---------------------------INCOMPLETE-------------------------------------------------
     public static void editSchedule() {
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
 
         } catch (Exception exception) {
-            System.out.println("Error when editing schedule"+ exception.getMessage());
+            System.out.println("Error when editing schedule "+ exception.getMessage());
         }
     }
+
+
+    //DESTROY SCHEDULE FUNCTION ----------------------------INCOMPLETE-------------------------------------------------
+    public static void delSchedule() {
+        try {
+
+
+
+        } catch (Exception exception) {
+            System.out.println("Error when deleting schedule " + exception.getMessage());
+        }
+    }
+
 }

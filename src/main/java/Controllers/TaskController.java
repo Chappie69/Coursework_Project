@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TaskController {
 
 
-    //CREATE TASK FUNCTION ----------------------------NOT TESTED----------------------------------------------------
+    //CREATE TASK FUNCTION ----------------------------COMPLETE----------------------------------------------------
     public static void newTask(String taskName) {
         try {
 
@@ -29,13 +29,14 @@ public class TaskController {
             results = ps.executeQuery();
             TaskID = results.getInt(1);
 
-            //This is the statement that will be sent into the table ---------------------------------------------------
-            ps = Main.db.prepareStatement("INSERT INTO Tasks (TaskID, TaskName, TaskDue, TaskDone, PriorityID) VALUES (?, ?, ?, ?, ?)");
-
             int newID = TaskID + 1;
             String inpTaskDue = "None";
             Boolean inpTaskDone = false;
             int inpPriority = 0;
+
+
+            //This is the statement that will be sent into the table ---------------------------------------------------
+            ps = Main.db.prepareStatement("INSERT INTO Tasks (TaskID, TaskName, TaskDue, TaskDone, PriorityID) VALUES (?, ?, ?, ?, ?)");
 
             ps.setInt(1, newID);
             ps.setString(2, taskName);
@@ -51,10 +52,8 @@ public class TaskController {
         }
     }
 
-    //READ FROM TASKS ------------------------------INCOMPLETE----------------------------------------------------
+    //READ FROM TASKS ------------------------------COMPLETE----------------------------------------------------
     public static void readTasks() {
-
-        Main.openDatabase("proj_database.db");
 
         try {
 
@@ -70,22 +69,24 @@ public class TaskController {
             }
 
         } catch (Exception exception) {
-            System.out.println("Database error: " + exception.getMessage());
+            System.out.println("Error reading tasks " + exception.getMessage());
         }
 
-        Main.closeDatabase();
     }
 
 
-    //UPDATE TASK FUNCTION -----------------------------INCOMPLETE--------------------------------------------------------
-    public static void editTask() {
+    //UPDATE TASK FUNCTION -----------------------------INCOMPLETE/UNTESTED--------------------------------------------------------
+    public static void editTask(String TaskName, String NewName) {
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Tasks SET TaskName = ? WHERE TaskName = ?");
+            ps.setString(1,NewName);
+            ps.setString(2,TaskName);
+
+            ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error when editing task");
+            System.out.println("Error when editing task name " + exception.getMessage());
         }
     }
 
@@ -93,13 +94,10 @@ public class TaskController {
     //DESTROY TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
     public static void delTask(String taskName) {
         try {
-            Main.openDatabase("proj_database.db");
 
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");
             ps.setString(1, taskName);
             ps.executeUpdate();
-
-            Main.closeDatabase();
 
         } catch (Exception exception) {
             System.out.println("Error removing task: "+ exception.getMessage());
