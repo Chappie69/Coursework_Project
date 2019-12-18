@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class EventsController {
 
-    //CREATE EVENT FUNCTION ----------------------------NOT TESTED----------------------------------------------------
+    //CREATE EVENT FUNCTION ----------------------------NOT TESTED-----------------------------------------------------
     public static void newEvent(String eventName) {
         try {
 

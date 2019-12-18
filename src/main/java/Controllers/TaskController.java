@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TaskController {
 
 
-    //CREATE TASK FUNCTION ----------------------------COMPLETE----------------------------------------------------
+    //CREATE TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
     public static void newTask(String taskName) {
         try {
 

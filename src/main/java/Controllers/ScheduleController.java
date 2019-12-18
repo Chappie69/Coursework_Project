@@ -68,7 +68,7 @@ public class ScheduleController {
     }
 
 
-    //UPDATE SCHEDULE FUNCTION ---------------------------NOT TESTED-------------------------------------------------
+    //UPDATE SCHEDULE FUNCTION ---------------------------NOT TESTED---------------------------------------------------
     public static void editSchedule(String newName) {
         try {
 

@@ -54,7 +54,7 @@ public class UserController {
         }
     }
 
-    //EDIT EXISTING USER -------------------------- Not tested -----------------------------------------------
+    //EDIT EXISTING USER -------------------------- Not tested -----------------------------------------------------
     public static void editUser(String username, String password) {
         try {
 

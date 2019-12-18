@@ -10,7 +10,7 @@ public class TimetableController {
 
     public static Connection db = null;
 
-    //ADD TIMETABLE FUNCTION ----------------------------------NOT TESTED-----------------------------------------------
+    //ADD TIMETABLE FUNCTION ----------------------------------NOT TESTED------------------------------------------------
     public static void newTable(String tableName) {
         try {
 
