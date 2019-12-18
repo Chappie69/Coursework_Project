@@ -2,56 +2,87 @@ package Controllers;
 
 import Server.Main;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class TimetableController {
 
     public static Connection db = null;
 
-    //ADD TIMETABLE FUNCTION
-    public static void newTable() {
+    //ADD TIMETABLE FUNCTION ----------------------------------NOT TESTED-----------------------------------------------
+    public static void newTable(String tableName) {
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
+            int tableID;
+            PreparedStatement ps = Main.db.prepareStatement("SELECT TableID, FROM Tables");
 
-            System.out.println("Enter timetable name");
+            ResultSet results = ps.executeQuery();
+            tableID = results.getInt(1);
 
-    //CATCH ERRORS
+            //This is the statement that will be sent into the table
+            ps = Main.db.prepareStatement("INSERT INTO Tables (TableID, TableName) VALUES (?, ?)");
+
+            int newID = tableID + 1;
+
+            ps.setInt(1, newID);
+            ps.setString(2, tableName);
+
+            //Executes prepared statement
+            ps.executeUpdate();
+
         } catch (Exception exception) {
-            System.out.println("Error adding new timetable");
+            System.out.println("Error adding new Timetable: " + exception.getMessage());
         }
     }
 
 
-    //REMOVE TIMETABLE FUNCTION
-    public static void delTable() {
+    //READ FROM TIMETABLES ----------------------------------NOT TESTED-------------------------------------------------
+    public static void readTables() {
+
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT TableID, TableName FROM Timetables");
+            ResultSet results = ps.executeQuery();
 
-            System.out.println("Enter timetable name which you wish to delete");
+            //"results.next" makes the program go through each record in the table
+            while (results.next()) {
+                int tableID = results.getInt(1);
+                String tableName = results.getString(2);
+                System.out.println(tableID + " " + tableName);
+            }
 
-    //CATCH ERRORS
         } catch (Exception exception) {
-            System.out.println("Error when deleting timetable");
+            System.out.println("Error reading tables " + exception.getMessage());
         }
     }
 
 
-    //EDIT TIMETABLE FUNCTION
-    public static void editTable() {
+    //EDIT TIMETABLE FUNCTION ----------------------------------NOT TESTED----------------------------------------------
+    public static void editTable(String newName) {
         try {
 
-            Scanner in = new Scanner(System.in);
-            Main.openDatabase("proj_database.db");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Timetables SET TableName = ?, ");
+            ps.setString(1,newName);
 
-            System.out.println("Enter timetable name to edit");
+            ps.executeUpdate();
 
-    //CATCH ERRORS
         } catch (Exception exception) {
-            System.out.println("Error when editing timetable");
+            System.out.println("Error changing timetable name " + exception.getMessage());
+        }
+    }
+
+
+    //REMOVE TIMETABLE FUNCTION ----------------------------------NOT TESTED--------------------------------------------
+    public static void delTable(String tableName) {
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Timetables WHERE TableName = ?");
+            ps.setString(1, tableName);
+            ps.executeUpdate();
+
+
+        } catch (Exception exception) {
+            System.out.println("Error removing timetable "+ exception.getMessage());
         }
     }
 }

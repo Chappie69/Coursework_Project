@@ -78,7 +78,7 @@ public class UserController {
 
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user: "+ exception.getMessage());
+            System.out.println("Error removing user: "+ exception.getMessage());
         }
     }
 }

@@ -68,25 +68,31 @@ public class ScheduleController {
     }
 
 
-    //UPDATE SCHEDULE FUNCTION ---------------------------INCOMPLETE-------------------------------------------------
-    public static void editSchedule() {
+    //UPDATE SCHEDULE FUNCTION ---------------------------NOT TESTED-------------------------------------------------
+    public static void editSchedule(String newName) {
         try {
 
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Schedules SET ScheduleName = ?, ");
+            ps.setString(1,newName);
+
+            ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error when editing schedule "+ exception.getMessage());
+            System.out.println("Error changing schedule name " + exception.getMessage());
         }
     }
 
 
-    //DESTROY SCHEDULE FUNCTION ----------------------------INCOMPLETE-------------------------------------------------
-    public static void delSchedule() {
+    //DESTROY SCHEDULE FUNCTION ----------------------------NOT TESTED-------------------------------------------------
+    public static void delSchedule(String scheduleName) {
         try {
-
+            PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Schedules WHERE ScheduleName = ?");
+            ps.setString(1, scheduleName);
+            ps.executeUpdate();
 
 
         } catch (Exception exception) {
-            System.out.println("Error when deleting schedule " + exception.getMessage());
+            System.out.println("Error removing schedule: "+ exception.getMessage());
         }
     }
 
