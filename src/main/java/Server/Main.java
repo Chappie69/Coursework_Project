@@ -36,13 +36,7 @@ public class Main {
     public static void main(String[] args) {
         openDatabase("proj_database.db");
 
-        Scanner in = new Scanner(System.in);
-
-        int userID = 0;
-        String user;
-
-        //STUFF TO CALL METHOD TO DO STUFF -----------------------------------------------------------------------------
-        TaskController.readTasks();
+        //*CALL FOR METHOD GOES HERE*
 
         closeDatabase();
     }

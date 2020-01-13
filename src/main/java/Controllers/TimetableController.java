@@ -1,17 +1,25 @@
 package Controllers;
 
 import Server.Main;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
+@Path("TimetableController/")
 public class TimetableController {
 
     public static Connection db = null;
 
     //ADD TIMETABLE FUNCTION ----------------------------------NOT TESTED------------------------------------------------
-    public static void newTable(String tableName) {
+    @GET
+    @Path("newTable/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String newTable(String tableName) {
         try {
 
             int tableID;
@@ -32,13 +40,18 @@ public class TimetableController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new Timetable: " + exception.getMessage());
+            return ("Error adding new Timetable: " + exception.getMessage());
         }
+        return ("Table created");
     }
 
 
     //READ FROM TIMETABLES ----------------------------------NOT TESTED-------------------------------------------------
-    public static void readTables() {
+    @POST
+    @Path("readTables/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readTables() {
 
         try {
 
@@ -53,28 +66,39 @@ public class TimetableController {
             }
 
         } catch (Exception exception) {
-            System.out.println("Error reading tables " + exception.getMessage());
+            return ("Error reading from timetables " + exception.getMessage());
         }
+        return ("Tables read");
     }
 
 
     //EDIT TIMETABLE FUNCTION ----------------------------------NOT TESTED----------------------------------------------
-    public static void editTable(String newName) {
+    @GET
+    @Path("editTable/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editTable(String tableName, String newName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Timetables SET TableName = ?, ");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Timetables SET TableName = ?, WHERE TableName = ?");
             ps.setString(1,newName);
+            ps.setString(2,tableName);
 
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error changing timetable name " + exception.getMessage());
+            return ("Error changing timetable name " + exception.getMessage());
         }
+        return ("Changes saved");
     }
 
 
     //REMOVE TIMETABLE FUNCTION ----------------------------------NOT TESTED--------------------------------------------
-    public static void delTable(String tableName) {
+    @GET
+    @Path("delTable/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String delTable(String tableName) {
         try {
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Timetables WHERE TableName = ?");
             ps.setString(1, tableName);
@@ -82,7 +106,8 @@ public class TimetableController {
 
 
         } catch (Exception exception) {
-            System.out.println("Error removing timetable "+ exception.getMessage());
+            return ("Error removing timetable "+ exception.getMessage());
         }
+        return ("Table deleted");
     }
 }

@@ -1,16 +1,22 @@
 package Controllers;
 
 import Server.Main;
-import java.sql.Connection;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Scanner;
 
+@Path("TaskController/")
 public class TaskController {
 
 
     //CREATE TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
-    public static void newTask(String taskName) {
+    @GET
+    @Path("newTask/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String newTask(String taskName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT TaskID, TaskName FROM Tasks");
@@ -48,12 +54,17 @@ public class TaskController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new task " + exception.getMessage());
+            return("Error adding new task " + exception.getMessage());
         }
+        return ("Add new task complete");
     }
 
     //READ FROM TASKS ------------------------------COMPLETE----------------------------------------------------
-    public static void readTasks() {
+    @POST
+    @Path("readTasks/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readTasks() {
 
         try {
 
@@ -69,14 +80,18 @@ public class TaskController {
             }
 
         } catch (Exception exception) {
-            System.out.println("Error reading tasks " + exception.getMessage());
+            return("Error reading tasks " + exception.getMessage());
         }
-
+        return ("Read complete");
     }
 
 
     //UPDATE TASK FUNCTION -----------------------------INCOMPLETE/UNTESTED--------------------------------------------------------
-    public static void editTask(String TaskName, String NewName) {
+    @GET
+    @Path("editTask/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editTask(String TaskName, String NewName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Tasks SET TaskName = ? WHERE TaskName = ?");
@@ -86,13 +101,18 @@ public class TaskController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error when editing task name " + exception.getMessage());
+            return("Error when editing task name " + exception.getMessage());
         }
+        return ("Edit complete");
     }
 
 
     //DESTROY TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
-    public static void delTask(String taskName) {
+    @GET
+    @Path("delTask/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String delTask(String taskName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");
@@ -100,7 +120,8 @@ public class TaskController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error removing task: "+ exception.getMessage());
+            return("Error removing task: "+ exception.getMessage());
         }
+        return ("Delete complete");
     }
 }

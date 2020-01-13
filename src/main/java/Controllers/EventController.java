@@ -4,31 +4,38 @@ import Server.Main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
-public class EventsController {
+@Path("EventController/")
+public class EventController {
 
     //CREATE EVENT FUNCTION ----------------------------NOT TESTED-----------------------------------------------------
-    public static void newEvent(String eventName) {
+    @GET
+    @Path("newEvent/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String newEvent(String eventName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT EventID, EventName FROM Events");
 
-            int EventID;
+            int eventID;
             String EventName;
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
-                EventID = results.getInt(1);
+                eventID = results.getInt(1);
                 EventName = results.getString(2);
-                System.out.println(EventID + " " + EventName);
+                System.out.println(eventID + " " + EventName);
             }
 
             ps = Main.db.prepareStatement("SELECT EventID FROM Events");
             results = ps.executeQuery();
-            EventID = results.getInt(1);
+            eventID = results.getInt(1);
 
-            int newID = EventID + 1;
-            String EventTime = "00:00";
+            int newID = eventID + 1;
+            String eventTime = "00:00";
             Boolean Reminder = false;
 
 
@@ -37,20 +44,25 @@ public class EventsController {
 
             ps.setInt(1, newID);
             ps.setString(2, eventName);
-            ps.setString(3, EventTime);
+            ps.setString(3, eventTime);
             ps.setBoolean(4, Reminder);
 
             //Executes prepared statement
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new task " + exception.getMessage());
+            return ("Error adding new task " + exception.getMessage());
         }
+        return ("Event added");
     }
 
 
     //READ FROM EVENTS -----------------------------------NOT TESTED------------------------------------------------------
-    public static void readEvents() {
+    @POST
+    @Path("readEvents/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readEvents() {
 
         try {
 
@@ -65,38 +77,48 @@ public class EventsController {
             }
 
         } catch (Exception exception) {
-            System.out.println("Error when reading from events " + exception.getMessage());
+            return ("Error when reading from events " + exception.getMessage());
         }
+        return("Events read from");
     }
 
 
     //UPDATE EXISTING EVENT -------------------------- Not tested or correct? -----------------------------------------------
-    public static void editEvent(String EventName, String newName) {
+    @GET
+    @Path("editEvent/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editEvent(String eventName, String newName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Events SET EventName = ?, WHERE EventName = ?");
             ps.setString(1,newName);
-            ps.setString(2,EventName);
+            ps.setString(2,eventName);
 
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error changing event name " + exception.getMessage());
+            return ("Error changing event name " + exception.getMessage());
         }
-
+        return ("Event edited");
     }
 
 
     //DESTROY EVENT FUNCTION ----------------------------Not tested--------------------------------------------------------
-    public static void delEvent(String EventName) {
+    @GET
+    @Path("delEvent/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String delEvent(String eventName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Events WHERE EventName = ?");
-            ps.setString(1, EventName);
+            ps.setString(1, eventName);
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error removing event: "+ exception.getMessage());
+            return ("Error removing event: "+ exception.getMessage());
         }
+        return ("Event deleted");
     }
 }

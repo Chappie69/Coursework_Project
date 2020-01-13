@@ -1,13 +1,20 @@
 package Controllers;
 
 import Server.Main;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.*;
 
-
+@Path("UserController/")
 public class UserController {
 
     //CREATE NEW USER FUNCTION ------------------------------(in)COMPLETE-----------------------------------------------
-    public static void newUser(String username, String password) {
+    @GET
+    @Path("newUser/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String newUser(String username, String password) {
         try {
 
             int userID;
@@ -29,13 +36,18 @@ public class UserController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user: " + exception.getMessage());
+            return("Error adding new user: " + exception.getMessage());
         }
+        return ("User added");
     }
 
 
     //READ FROM USERS --------------------------------------------------------------------------------------------------
-    public static void readUsers() {
+    @POST
+    @Path("readUsers/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readUsers() {
 
         try {
 
@@ -50,12 +62,17 @@ public class UserController {
             }
 
         } catch (Exception exception) {
-            System.out.println("Database error: " + exception.getMessage());
+            return("Database error: " + exception.getMessage());
         }
+        return ("Users read from");
     }
 
     //EDIT EXISTING USER -------------------------- Not tested -----------------------------------------------------
-    public static void editUser(String username, String password) {
+    @GET
+    @Path("editUser/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editUser(String username, String password) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Password = ?, ");
@@ -64,13 +81,17 @@ public class UserController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error changing password " + exception.getMessage());
+            return("Error changing password " + exception.getMessage());
         }
-
+        return("User edit complete");
     }
 
     //DELETE EXISTING USER FUNCTION ------------------------------------------------------------------------------------
-    public static void delUser(String username) {
+    @GET
+    @Path("delUser/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String delUser(String username) {
         try {
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = ?");
             ps.setString(1, username);
@@ -78,7 +99,8 @@ public class UserController {
 
 
         } catch (Exception exception) {
-            System.out.println("Error removing user: "+ exception.getMessage());
+            return("Error removing user: "+ exception.getMessage());
         }
+        return("User deleted");
     }
 }

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="changed all controllers so that they should all work hopefully" />
+    <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +87,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -193,6 +203,11 @@
       <workItem from="1576156148120" duration="4240000" />
       <workItem from="1576667765035" duration="676000" />
       <workItem from="1576668474402" duration="1176000" />
+      <workItem from="1576669692839" duration="65000" />
+      <workItem from="1578301733396" duration="2045000" />
+      <workItem from="1578481203308" duration="3763000" />
+      <workItem from="1578576398505" duration="2718000" />
+      <workItem from="1578906399551" duration="4083000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -306,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576669498806</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="changed all controllers so that they should all work hopefully">
+      <created>1576669743563</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576669743563</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
