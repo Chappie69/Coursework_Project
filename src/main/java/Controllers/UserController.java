@@ -9,7 +9,7 @@ import java.sql.*;
 @Path("UserController/")
 public class UserController {
 
-    //CREATE NEW USER FUNCTION ------------------------------(in)COMPLETE-----------------------------------------------
+    //CREATE NEW USER FUNCTION ------------------------------COMPLETE--------------------------------------------------
     @GET
     @Path("newUser/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)

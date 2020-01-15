@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -207,7 +200,8 @@
       <workItem from="1578301733396" duration="2045000" />
       <workItem from="1578481203308" duration="3763000" />
       <workItem from="1578576398505" duration="2718000" />
-      <workItem from="1578906399551" duration="4083000" />
+      <workItem from="1578906399551" duration="4575000" />
+      <workItem from="1579085574720" duration="2781000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -328,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576669743563</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="API PATHS INTRODUCED">
+      <created>1578910988098</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1578910988098</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +358,7 @@
     <MESSAGE value="Started doing remove CRUD for tasks" />
     <MESSAGE value="Have clocked how everything works, now just need to implement into other controllers" />
     <MESSAGE value="changed all controllers so that they should all work hopefully" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed all controllers so that they should all work hopefully" />
+    <MESSAGE value="API PATHS INTRODUCED" />
+    <option name="LAST_COMMIT_MESSAGE" value="API PATHS INTRODUCED" />
   </component>
 </project>
