@@ -25,15 +25,9 @@ public class ScheduleController {
 
             int scheduleID = 0;
 
-            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID, ScheduleName, CategoryID FROM Schedules");
+            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID FROM Schedules");
 
             ResultSet results = ps .executeQuery();
-            while (results.next()) {
-                scheduleID = results.getInt(1);
-                String ScheduleName = results.getString(2);
-                int CategoryID = results.getInt(3);
-                System.out.println(scheduleID + " " + ScheduleName + " " + CategoryID);
-            }
 
             //This is the statement that will be sent into the table
             ps = db.prepareStatement("INSERT INTO Schedules (ScheduleID, ScheduleName, CategoryID) VALUES (?, ?, ?)");
