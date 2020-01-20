@@ -4,7 +4,8 @@ import Server.Main;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 @Path("UserController/")
 public class UserController {

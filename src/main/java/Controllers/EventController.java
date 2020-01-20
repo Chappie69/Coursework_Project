@@ -18,18 +18,11 @@ public class EventController {
     public String newEvent(String eventName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT EventID, EventName FROM Events");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT EventID FROM Events");
 
             int eventID;
-            String EventName;
 
             ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                eventID = results.getInt(1);
-                EventName = results.getString(2);
-                System.out.println(eventID + " " + EventName);
-            }
-
             ps = Main.db.prepareStatement("SELECT EventID FROM Events");
             results = ps.executeQuery();
             eventID = results.getInt(1);

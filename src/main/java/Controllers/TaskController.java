@@ -19,19 +19,10 @@ public class TaskController {
     public String newTask(String taskName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT TaskID, TaskName FROM Tasks");
-
             int TaskID;
-            String TaskName;
 
+            PreparedStatement ps = Main.db.prepareStatement("SELECT TaskID FROM Tasks");
             ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                TaskID = results.getInt(1);
-                TaskName = results.getString(2);
-                System.out.println(TaskID + " " + TaskName);
-            }
-
-            ps = Main.db.prepareStatement("SELECT TaskID FROM Tasks");
             results = ps.executeQuery();
             TaskID = results.getInt(1);
 
