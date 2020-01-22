@@ -11,19 +11,20 @@ import java.sql.ResultSet;
 public class UserController {
 
     //CREATE NEW USER FUNCTION ------------------------------COMPLETE--------------------------------------------------
-    @GET
-    @Path("newUser/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String newUser(String username, String password) {
+//  @GET
+//  @Path("newUser/")
+//  @Consumes(MediaType.MULTIPART_FORM_DATA)
+//  @Produces(MediaType.APPLICATION_JSON)
+    public static void newUser(String username, String password) {
         try {
 
             int userID;
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password FROM Users");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT MAX(UserID) FROM Users");
 
             ResultSet results = ps.executeQuery();
             userID = results.getInt(1);
 
+            System.out.println(userID);
             //This is the statement that will be sent into the table
             ps = Main.db.prepareStatement("INSERT INTO Users (UserID, Username, Password) VALUES (?, ?, ?)");
 
@@ -37,9 +38,10 @@ public class UserController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            return("Error adding new user: " + exception.getMessage());
+            System.out.println("Error adding new user: " + exception.getMessage());
         }
-        return ("User added");
+        System.out.println("User added");
+//        return ("User added");
     }
 
 

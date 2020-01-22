@@ -2,6 +2,11 @@ package Server;
 
 import Controllers.TaskController;
 import Controllers.UserController;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
 import org.sqlite.SQLiteConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,15 +36,17 @@ public class Main {
 //      } catch (Exception e) {
 //          e.printStackTrace();
 //      }
+//      closeDatabase();
 //  }
 
-    public static void main(String[] args) {
-        openDatabase("proj_database.db");
+     public static void main(String[] args) {
+         openDatabase("proj_database.db");
 
-        //*CALL FOR METHOD GOES HERE*
+         //*CALL FOR METHOD GOES HERE*
+         UserController.newUser("Jenkins", "hatsarecool4");
 
-        closeDatabase();
-    }
+         closeDatabase();
+     }
 
     // OPEN DATABASE FUNCTION
     public static void openDatabase(String dbFile) {
