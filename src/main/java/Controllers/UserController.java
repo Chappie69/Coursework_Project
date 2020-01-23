@@ -11,11 +11,11 @@ import java.sql.ResultSet;
 public class UserController {
 
     //CREATE NEW USER FUNCTION ------------------------------COMPLETE--------------------------------------------------
-//  @GET
-//  @Path("newUser/")
-//  @Consumes(MediaType.MULTIPART_FORM_DATA)
-//  @Produces(MediaType.APPLICATION_JSON)
-    public static void newUser(String username, String password) {
+    @GET
+    @Path("newUser/")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String newUser(String username, String password) {
         try {
 
             int userID;
@@ -38,10 +38,9 @@ public class UserController {
             ps.executeUpdate();
 
         } catch (Exception exception) {
-            System.out.println("Error adding new user: " + exception.getMessage());
+            return ("Error adding new user: " + exception.getMessage());
         }
-        System.out.println("User added");
-//        return ("User added");
+        return ("User added");
     }
 
 

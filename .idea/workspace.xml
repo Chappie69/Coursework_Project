@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="API PATHS INTRODUCED">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/client/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/client/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EventsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ScheduleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/ScheduleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TimetableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TimetableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Coursework_Project.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Main.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +205,8 @@
       <workItem from="1579181364271" duration="1930000" />
       <workItem from="1579253861197" duration="2783000" />
       <workItem from="1579511316300" duration="3345000" />
-      <workItem from="1579690707771" duration="3864000" />
+      <workItem from="1579690707771" duration="4285000" />
+      <workItem from="1579784946233" duration="1679000" />
     </task>
     <task id="LOCAL-00001" summary="yoooooooooooooo it hecking works bro">
       <created>1560504566185</created>
@@ -367,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579515924931</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="STARTED HTML">
+      <created>1579694680926</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1579694680926</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,6 +392,7 @@
     <MESSAGE value="Have clocked how everything works, now just need to implement into other controllers" />
     <MESSAGE value="changed all controllers so that they should all work hopefully" />
     <MESSAGE value="API PATHS INTRODUCED" />
-    <option name="LAST_COMMIT_MESSAGE" value="API PATHS INTRODUCED" />
+    <MESSAGE value="STARTED HTML" />
+    <option name="LAST_COMMIT_MESSAGE" value="STARTED HTML" />
   </component>
 </project>
