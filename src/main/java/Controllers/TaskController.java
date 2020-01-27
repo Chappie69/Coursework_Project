@@ -1,6 +1,7 @@
 package Controllers;
 
 import Server.Main;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,16 +13,16 @@ public class TaskController {
 
 
     //CREATE TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
-    @GET
+    @POST
     @Path("newTask/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String newTask(String taskName) {
+    public String newTask(@FormDataParam("taskName")String taskName) {
         try {
 
             int TaskID;
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT TaskID FROM Tasks");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT MAX(TaskID) FROM Tasks");
             ResultSet results = ps.executeQuery();
             results = ps.executeQuery();
             TaskID = results.getInt(1);
@@ -51,9 +52,8 @@ public class TaskController {
     }
 
     //READ FROM TASKS ------------------------------COMPLETE----------------------------------------------------
-    @POST
+    @GET
     @Path("readTasks/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String readTasks() {
 
@@ -78,16 +78,16 @@ public class TaskController {
 
 
     //UPDATE TASK FUNCTION -----------------------------INCOMPLETE/UNTESTED--------------------------------------------------------
-    @GET
+    @POST
     @Path("editTask/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editTask(String TaskName, String NewName) {
+    public String editTask(@FormDataParam("taskName")String taskName, @FormDataParam("newName")String newName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Tasks SET TaskName = ? WHERE TaskName = ?");
-            ps.setString(1,NewName);
-            ps.setString(2,TaskName);
+            ps.setString(1,newName);
+            ps.setString(2,taskName);
 
             ps.executeUpdate();
 
@@ -99,11 +99,11 @@ public class TaskController {
 
 
     //DESTROY TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
-    @GET
+    @POST
     @Path("delTask/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String delTask(String taskName) {
+    public String delTask(@FormDataParam("taskName") String taskName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Tasks WHERE TaskName = ?");

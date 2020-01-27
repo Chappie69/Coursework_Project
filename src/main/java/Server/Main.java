@@ -1,5 +1,5 @@
 package Server;
-
+import org.eclipse.jetty.server.Server;
 import Controllers.TaskController;
 import Controllers.UserController;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -16,37 +16,37 @@ public class Main {
 
     public static Connection db = null;
 
-//  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-//      openDatabase("proj_database.db");
+        openDatabase("proj_database.db");
 
-//      ResourceConfig config = new ResourceConfig();
-//      config.packages("Controllers");
-//      config.register(MultiPartFeature.class);
-//      ServletHolder servlet = new ServletHolder(new ServletContainer(config));
+        ResourceConfig config = new ResourceConfig();
+        config.packages("Controllers");
+        config.register(MultiPartFeature.class);
+        ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
-//      Server server = new Server(8081);
-//      ServletContextHandler context = new ServletContextHandler(server, "/");
-//      context.addServlet(servlet, "/*");
+        Server server = new Server(8081);
+        ServletContextHandler context = new ServletContextHandler(server, "/");
+        context.addServlet(servlet, "/*");
 
-//      try {
-//          server.start();
-//          System.out.println("Server successfully started.");
-//          server.join();
-//      } catch (Exception e) {
-//          e.printStackTrace();
-//      }
-//      closeDatabase();
-//  }
+        try {
+            server.start();
+            System.out.println("Server successfully started.");
+            server.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        closeDatabase();
+    }
 
-     public static void main(String[] args) {
-         openDatabase("proj_database.db");
+//    public static void main(String[] args) {
+//        openDatabase("proj_database.db");
 
-         //*CALL FOR METHOD GOES HERE*
-         UserController.newUser("Jenkins", "hatsarecool4");
+//        //*CALL FOR METHOD GOES HERE*
+//        UserController.newUser("Jenkins", "hatsarecool4");
 
-         closeDatabase();
-     }
+//        closeDatabase();
+//    }
 
     // OPEN DATABASE FUNCTION
     public static void openDatabase(String dbFile) {

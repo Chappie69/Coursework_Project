@@ -1,6 +1,7 @@
 package Controllers;
 
 import Server.Main;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +12,14 @@ import javax.ws.rs.core.MediaType;
 public class EventController {
 
     //CREATE EVENT FUNCTION ----------------------------NOT TESTED-----------------------------------------------------
-    @GET
+    @POST
     @Path("newEvent/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String newEvent(String eventName) {
+    public String newEvent(@FormDataParam("eventName")String eventName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT EventID FROM Events");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT MAX(EventID) FROM Events");
 
             int eventID;
 
@@ -51,9 +52,8 @@ public class EventController {
 
 
     //READ FROM EVENTS -----------------------------------NOT TESTED------------------------------------------------------
-    @POST
+    @GET
     @Path("readEvents/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String readEvents() {
 
@@ -77,11 +77,11 @@ public class EventController {
 
 
     //UPDATE EXISTING EVENT -------------------------- Not tested or correct? -----------------------------------------------
-    @GET
+    @POST
     @Path("editEvent/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editEvent(String eventName, String newName) {
+    public String editEvent(@FormDataParam("eventName")String eventName,@FormDataParam("newName") String newName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Events SET EventName = ?, WHERE EventName = ?");
@@ -98,11 +98,11 @@ public class EventController {
 
 
     //DESTROY EVENT FUNCTION ----------------------------Not tested--------------------------------------------------------
-    @GET
+    @POST
     @Path("delEvent/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String delEvent(String eventName) {
+    public String delEvent(@FormDataParam("eventName")String eventName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Events WHERE EventName = ?");

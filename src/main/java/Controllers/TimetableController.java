@@ -1,6 +1,7 @@
 package Controllers;
 
 import Server.Main;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,18 +13,16 @@ import java.util.Scanner;
 @Path("TimetableController/")
 public class TimetableController {
 
-    public static Connection db = null;
-
     //ADD TIMETABLE FUNCTION ----------------------------------NOT TESTED------------------------------------------------
-    @GET
+    @POST
     @Path("newTable/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String newTable(String tableName) {
+    public String newTable(@FormDataParam("tableName")String tableName) {
         try {
 
             int tableID;
-            PreparedStatement ps = Main.db.prepareStatement("SELECT TableID, FROM Tables");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT MAX(TableID), FROM Tables");
 
             ResultSet results = ps.executeQuery();
             tableID = results.getInt(1);
@@ -47,9 +46,8 @@ public class TimetableController {
 
 
     //READ FROM TIMETABLES ----------------------------------NOT TESTED-------------------------------------------------
-    @POST
+    @GET
     @Path("readTables/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String readTables() {
 
@@ -73,11 +71,11 @@ public class TimetableController {
 
 
     //EDIT TIMETABLE FUNCTION ----------------------------------NOT TESTED----------------------------------------------
-    @GET
+    @POST
     @Path("editTable/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editTable(String tableName, String newName) {
+    public String editTable(@FormDataParam("tableName")String tableName, @FormDataParam("newName")String newName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Timetables SET TableName = ?, WHERE TableName = ?");
@@ -94,11 +92,11 @@ public class TimetableController {
 
 
     //REMOVE TIMETABLE FUNCTION ----------------------------------NOT TESTED--------------------------------------------
-    @GET
+    @POST
     @Path("delTable/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String delTable(String tableName) {
+    public String delTable(@FormDataParam("tableName")String tableName) {
         try {
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Timetables WHERE TableName = ?");
             ps.setString(1, tableName);

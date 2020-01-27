@@ -2,6 +2,7 @@ package Controllers;
 
 import Server.Main;
 import jdk.jfr.Category;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,16 +17,16 @@ public class ScheduleController {
     public static Connection db = null;
 
     //ADD SCHEDULE FUNCTION -------------------------------NOT TESTED--------------------------------------------
-    @GET
+    @POST
     @Path("newSchedule/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String newSchedule(String scheduleName, Integer categoryID) {
+    public String newSchedule(@FormDataParam("scheduleName") String scheduleName, @FormDataParam("categoryID") Integer categoryID) {
         try {
 
             int scheduleID = 0;
 
-            PreparedStatement ps = db.prepareStatement("SELECT ScheduleID FROM Schedules");
+            PreparedStatement ps = db.prepareStatement("SELECT MAX(ScheduleID) FROM Schedules");
 
             ResultSet results = ps .executeQuery();
 
@@ -49,9 +50,8 @@ public class ScheduleController {
 
 
     //READ FROM SCHEDULES -------------------------------NOT TESTED-----------------------------------------------------
-    @POST
+    @GET
     @Path("readSchedules/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String readSchedules() {
 
@@ -75,11 +75,11 @@ public class ScheduleController {
 
 
     //UPDATE SCHEDULE FUNCTION ---------------------------NOT TESTED---------------------------------------------------
-    @GET
+    @POST
     @Path("editSchedule/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editSchedule(String newName) {
+    public String editSchedule(@FormDataParam("newName") String newName) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Schedules SET ScheduleName = ?, ");
@@ -95,11 +95,11 @@ public class ScheduleController {
 
 
     //DESTROY SCHEDULE FUNCTION ----------------------------NOT TESTED-------------------------------------------------
-    @GET
+    @POST
     @Path("delSchedule/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String delSchedule(String scheduleName) {
+    public String delSchedule(@FormDataParam("scheduleName")String scheduleName) {
         try {
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Schedules WHERE ScheduleName = ?");
             ps.setString(1, scheduleName);

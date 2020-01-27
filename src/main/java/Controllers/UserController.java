@@ -1,6 +1,9 @@
 package Controllers;
 
 import Server.Main;
+import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,11 +14,11 @@ import java.sql.ResultSet;
 public class UserController {
 
     //CREATE NEW USER FUNCTION ------------------------------COMPLETE--------------------------------------------------
-    @GET
+    @POST
     @Path("newUser/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String newUser(String username, String password) {
+    public String newUser(@FormDataParam("username")String username, @FormDataParam("password")String password) {
         try {
 
             int userID;
@@ -24,7 +27,6 @@ public class UserController {
             ResultSet results = ps.executeQuery();
             userID = results.getInt(1);
 
-            System.out.println(userID);
             //This is the statement that will be sent into the table
             ps = Main.db.prepareStatement("INSERT INTO Users (UserID, Username, Password) VALUES (?, ?, ?)");
 
@@ -45,12 +47,11 @@ public class UserController {
 
 
     //READ FROM USERS --------------------------------------------------------------------------------------------------
-    @POST
+    @GET
     @Path("readUsers/")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String readUsers() {
-
+        JSONArray list = new JSONArray();
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username FROM Users");
@@ -58,23 +59,24 @@ public class UserController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int userID = results.getInt(1);
-                String username = results.getString(2);
-                System.out.println(userID + " " + username);
+                JSONObject item = new JSONObject();
+                item.put("userID", results.getInt(1));
+                item.put("username", results.getString(2));
+                list.add(item);
             }
-
+            return list.toString();
         } catch (Exception exception) {
-            return("Database error: " + exception.getMessage());
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
         }
-        return ("Users read from");
     }
 
     //EDIT EXISTING USER -------------------------- Not tested -----------------------------------------------------
-    @GET
+    @POST
     @Path("editUser/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editUser(String username, String password) {
+    public String editUser(@FormDataParam("username")String username, @FormDataParam("password")String password) {
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Password = ?, ");
@@ -89,11 +91,11 @@ public class UserController {
     }
 
     //DELETE EXISTING USER FUNCTION ------------------------------------------------------------------------------------
-    @GET
+    @POST
     @Path("delUser/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String delUser(String username) {
+    public String delUser(@FormDataParam("username")String username) {
         try {
             PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = ?");
             ps.setString(1, username);
