@@ -2,6 +2,8 @@ package Controllers;
 
 import Server.Main;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -50,7 +52,7 @@ public class TimetableController {
     @Path("readTables/")
     @Produces(MediaType.APPLICATION_JSON)
     public String readTables() {
-
+        JSONArray list = new JSONArray();
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT TableID, TableName FROM Timetables");
@@ -58,15 +60,16 @@ public class TimetableController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int tableID = results.getInt(1);
-                String tableName = results.getString(2);
-                System.out.println(tableID + " " + tableName);
+                JSONObject item = new JSONObject();
+                item.put("tableID", results.getInt(1));
+                item.put("tableName", results.getString(2));
+                list.add(item);
             }
-
+            return list.toString();
         } catch (Exception exception) {
-            return ("Error reading from timetables " + exception.getMessage());
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
         }
-        return ("Tables read");
     }
 
 

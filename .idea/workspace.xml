@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d34249-2820-4bcd-8c2c-e1177579b99f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/proj_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/proj_database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TimetableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ScheduleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/ScheduleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TimetableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TimetableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/Client.class" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,18 +96,6 @@
       <recent name="U:\COMPUTER SCIENCE\COURSEWORK" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.Main" />
@@ -152,13 +134,15 @@
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">

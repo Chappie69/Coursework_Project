@@ -2,6 +2,8 @@ package Controllers;
 
 import Server.Main;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,7 +58,7 @@ public class EventController {
     @Path("readEvents/")
     @Produces(MediaType.APPLICATION_JSON)
     public String readEvents() {
-
+        JSONArray list = new JSONArray();
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT EventID, EventName FROM Events");
@@ -64,15 +66,16 @@ public class EventController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int EventID = results.getInt(1);
-                String EventName = results.getString(2);
-                System.out.println(EventID + " " + EventName);
+                JSONObject item = new JSONObject();
+                item.put("EventID", results.getInt(1));
+                item.put("EventName", results.getString(2));
+                list.add(item);
             }
-
+            return list.toString();
         } catch (Exception exception) {
-            return ("Error when reading from events " + exception.getMessage());
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
         }
-        return("Events read from");
     }
 
 

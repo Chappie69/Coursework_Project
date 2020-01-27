@@ -3,6 +3,8 @@ package Controllers;
 import Server.Main;
 import jdk.jfr.Category;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -54,7 +56,7 @@ public class ScheduleController {
     @Path("readSchedules/")
     @Produces(MediaType.APPLICATION_JSON)
     public String readSchedules() {
-
+        JSONArray list = new JSONArray();
         try {
 
             PreparedStatement ps = Main.db.prepareStatement("SELECT ScheduleID, ScheduleName FROM Schedules");
@@ -62,15 +64,16 @@ public class ScheduleController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int ScheduleID = results.getInt(1);
-                String ScheduleName = results.getString(2);
-                System.out.println(ScheduleID + " " + ScheduleName);
+                JSONObject item = new JSONObject();
+                item.put("ScheduleID", results.getInt(1));
+                item.put("ScheduleName", results.getString(2));
+                list.add(item);
             }
-
+            return list.toString();
         } catch (Exception exception) {
-            return("Error when reading schedules " + exception.getMessage());
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
         }
-        return("Schedules read");
     }
 
 

@@ -2,6 +2,8 @@ package Controllers;
 
 import Server.Main;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +14,7 @@ import java.sql.ResultSet;
 public class TaskController {
 
 
-    //CREATE TASK FUNCTION ----------------------------COMPLETE--------------------------------------------------------
+    //CREATE TASK FUNCTION ----------------------------COMPLETE---------------------------------------------------------
     @POST
     @Path("newTask/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -56,7 +58,7 @@ public class TaskController {
     @Path("readTasks/")
     @Produces(MediaType.APPLICATION_JSON)
     public String readTasks() {
-
+        JSONArray list = new JSONArray();
         try {
 
             //These are the fields which will be retrieved and outputted:
@@ -65,15 +67,16 @@ public class TaskController {
 
             //"results.next" makes the program go through each record in the table
             while (results.next()) {
-                int TaskID = results.getInt(1);
-                String TaskName = results.getString(2);
-                System.out.println(TaskID + " " + TaskName);
+                JSONObject item = new JSONObject();
+                item.put("TaskID", results.getInt(1));
+                item.put("TaskName", results.getString(2));
+                list.add(item);
             }
-
+            return list.toString();
         } catch (Exception exception) {
-            return("Error reading tasks " + exception.getMessage());
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
         }
-        return ("Read complete");
     }
 
 
