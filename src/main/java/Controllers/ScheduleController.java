@@ -82,11 +82,12 @@ public class ScheduleController {
     @Path("editSchedule/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editSchedule(@FormDataParam("newName") String newName) {
+    public String editSchedule(@FormDataParam("newName") String scheduleName, @FormDataParam("newName") String newName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Schedules SET ScheduleName = ?, ");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Schedules SET ScheduleName = ?, WHERE ScheduleName = ?");
             ps.setString(1,newName);
+            ps.setString(2,scheduleName);
 
             ps.executeUpdate();
 

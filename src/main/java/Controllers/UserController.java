@@ -76,11 +76,12 @@ public class UserController {
     @Path("editUser/")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String editUser(@FormDataParam("username")String username, @FormDataParam("password")String password) {
+    public String editUser(@FormDataParam("username")String username, @FormDataParam("newName")String newName) {
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Password = ?, ");
-            ps.setString(1,password);
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Username = ? WHERE Username = ?");
+            ps.setString(1, username);
+            ps.setString(2, newName);
 
             ps.executeUpdate();
 
